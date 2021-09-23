@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3947dd53-f236-4473-8d3e-25d169a4e54f" name="Default Changelist" comment="" />
+    <list default="true" id="3947dd53-f236-4473-8d3e-25d169a4e54f" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/ChineseEncryption/config.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ChineseEncryption/src/Run.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ChineseEncryption/out/production/ChineseEncryption/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/ChineseEncryption/out/production/ChineseEncryption/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ChineseEncryption/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/ChineseEncryption/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ChineseEncryption/src/Text.java" beforeDir="false" afterPath="$PROJECT_DIR$/ChineseEncryption/src/Text.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -15,7 +21,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="ProjectId" id="1y7roe8UwXtyjwzdWjiNeuTiicG" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -28,6 +34,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/ChineseEncryption" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RunManager">
@@ -54,6 +61,7 @@
       <updated>1631613649031</updated>
       <workItem from="1631613651210" duration="282000" />
       <workItem from="1631613946653" duration="1908000" />
+      <workItem from="1632390203083" duration="25000" />
     </task>
     <servers />
   </component>

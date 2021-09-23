@@ -41,13 +41,10 @@ public class Text {
         String [] inputSplit = input.split("");
         for (int i = 0 ; i < inputSplit.length ; i ++ ){
             int code = inputSplit[i].charAt(0);
-            if(code>=65 && code<=90) {// si es mayuscula se hace minuscula
+            if((code>=65 && code<=90) || (code <= 122 && code >= 97) ){// si es mayuscula se hace minuscula
                 code = code + 32;
                 String aux = String.valueOf((char) code);
                 inputSplit[i]=aux;
-                if (code <= 122 && code >= 97) {
-                    output = output + (inputSplit[i]);
-                }
             }
         }
         return output;
