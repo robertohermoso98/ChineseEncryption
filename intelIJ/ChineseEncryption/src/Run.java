@@ -1,6 +1,8 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.util.Locale;
 import java.util.Objects;
+import java.util.StringTokenizer;
 
 public class Run {
 
@@ -8,6 +10,7 @@ public class Run {
     private boolean traceFlag;
     private String outpuFile;
     private String inputFile;
+    private ChineseEncryption che;
 
 
     public Run(){
@@ -15,6 +18,7 @@ public class Run {
         traceFlag=true;
         outpuFile="salidas.txt";
         inputFile="entradas.txt";
+        che=new ChineseEncryption();
     }
 
     public void runPlay(String fillName){
@@ -24,13 +28,69 @@ public class Run {
             FileReader f = new FileReader(fillName);
             BufferedReader b = new BufferedReader(f);
             while ((cadena = b.readLine()) != null) {
-                if(!cadena.equals(""))
-                    System.out.println(cadena);
+                if(!cadena.equals("")){
+                    chooseAction(cadena);
+                }
+
             }
             b.close();
         }catch (Exception e){
             e.printStackTrace();
         }
+    }
+
+    public void chooseAction(String cadena){
+        StringTokenizer st = new StringTokenizer(cadena);
+        String [] stringArray = new String[st.countTokens()];
+        int count =0;
+        while( st.hasMoreTokens()){
+            stringArray[count]=st.nextToken();
+            count++;
+        }
+        if(stringArray[0].equals("@")){
+            modificarBandera(stringArray[1],stringArray[2]);
+        }else{
+            chooseMethod(stringArray);
+        }
+    }
+
+    public void modificarBandera(String st1 , String st2){
+        boolean onOff;
+        if(st2.equals("ON")){
+            onOff=true;
+        }else{
+            onOff=false;
+        }
+        if(st1.equals("codifica")){
+            codifiesFlag=onOff;
+        }else{
+            traceFlag=onOff;
+        }
+    }
+
+   public void chooseMethod(String [] stringArray){
+       String fuction = stringArray[1];
+       if(fuction.equals("ficheroentrada")){
+           inputFile=stringArray[2];
+       }else{
+           if(fuction.equals("ficherosalida")){
+               outpuFile=stringArray[2];
+           }else{
+              if(fuction.equals("filas")){
+                  che.setNumRows(Integer.parseInt(stringArray[2]));
+               }else{
+                 if(fuction.equals("columnas")){
+                    che.setNumColum(Integer.parseInt(stringArray[2]));
+                 }else{
+                     china();
+                 }
+              }
+           }
+       }
+    }
+
+    public void china (){
+
     }
 
     public void formatInput(String fileInput){
@@ -41,6 +101,10 @@ public class Run {
         if(traceFlag){
             System.out.println(str);
         }
+    }
+
+    public void setChe(ChineseEncryption che) {
+        this.che = che;
     }
 
     public void setCodifiesFlag(boolean codifiesFlag) {
@@ -75,14 +139,21 @@ public class Run {
         return outpuFile;
     }
 
+    public ChineseEncryption getChe() {
+        return che;
+    }
+
     @Override
-    public String toString() {
-        return "Run{" +
-                "codifiesFlag=" + codifiesFlag +
-                ", traceFlag=" + traceFlag +
-                ", outpuFile='" + outpuFile + '\'' +
-                ", inputFile='" + inputFile + '\'' +
-                '}';
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Run run = (Run) o;
+        return codifiesFlag == run.codifiesFlag && traceFlag == run.traceFlag && Objects.equals(outpuFile, run.outpuFile) && Objects.equals(inputFile, run.inputFile) && Objects.equals(che, run.che);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(codifiesFlag, traceFlag, outpuFile, inputFile, che);
     }
 
     @Override
@@ -91,16 +162,13 @@ public class Run {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Run run = (Run) o;
-        return codifiesFlag == run.codifiesFlag && traceFlag == run.traceFlag && Objects.equals(outpuFile, run.outpuFile) && Objects.equals(inputFile, run.inputFile);
+    public String toString() {
+        return "Run{" +
+                "codifiesFlag=" + codifiesFlag +
+                ", traceFlag=" + traceFlag +
+                ", outpuFile='" + outpuFile + '\'' +
+                ", inputFile='" + inputFile + '\'' +
+                ", che=" + che.toString() +
+                '}';
     }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(codifiesFlag, traceFlag, outpuFile, inputFile);
-    }
-
 }
