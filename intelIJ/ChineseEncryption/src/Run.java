@@ -8,7 +8,9 @@ public class Run {
     private String outpuFile="salida.txt";
     private String inputFile="entrada.txt";
 
-    public Run(){}
+    public Run(){
+        codifiesFlag=
+    }
 
     public void runPlay(String fillName){
         String cadena;
@@ -29,5 +31,10 @@ public class Run {
     public void formatInput(String fileInput){
 
 
+    }
+    public void show(String str){
+        if(traceFlag){
+            System.out.println(str);
+        }
     }
 }

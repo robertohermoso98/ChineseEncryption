@@ -7,7 +7,7 @@ public class Main {
 
         Run run = new Run();
         run.runPlay("config");
-        
+
 
     }
 }
