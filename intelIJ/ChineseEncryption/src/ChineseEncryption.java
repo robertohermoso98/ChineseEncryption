@@ -5,7 +5,9 @@ public class ChineseEncryption {
     private int numColum;
     private int numRows;
 
-    public ChineseEncryption(){ }
+    public ChineseEncryption(){
+        numColum=3;
+    }
     public ChineseEncryption(int colum, int rows){
         numColum=colum;
         numRows=rows;
@@ -28,6 +30,7 @@ public class ChineseEncryption {
     }
 
     public String encrytion(String plainText){
+
         Text text = new Text();
         String [] [] arrayString = new String [numRows][numColum];
         plainText=text.fillPlainText(plainText, numColum*numRows);
