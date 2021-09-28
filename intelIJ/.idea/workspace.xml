@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3947dd53-f236-4473-8d3e-25d169a4e54f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/ChineseEncryption/config.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ChineseEncryption/src/Run.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ChineseEncryption/out/production/ChineseEncryption/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/ChineseEncryption/out/production/ChineseEncryption/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ChineseEncryption/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/ChineseEncryption/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ChineseEncryption/src/Text.java" beforeDir="false" afterPath="$PROJECT_DIR$/ChineseEncryption/src/Text.java" afterDir="false" />
-    </list>
+    <list default="true" id="3947dd53-f236-4473-8d3e-25d169a4e54f" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -62,6 +56,7 @@
       <workItem from="1631613651210" duration="282000" />
       <workItem from="1631613946653" duration="1908000" />
       <workItem from="1632390203083" duration="25000" />
+      <workItem from="1632853906830" duration="42000" />
     </task>
     <servers />
   </component>

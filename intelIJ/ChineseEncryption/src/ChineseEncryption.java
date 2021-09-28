@@ -1,9 +1,11 @@
 import java.util.Objects;
 
-public class ChineseEncryption {
+public class ChineseEncryption  implements Cloneable {
 
     private int numColum;
     private int numRows;
+
+
 
     public ChineseEncryption(){
         numColum=3;
@@ -124,7 +126,8 @@ public class ChineseEncryption {
     }
 
     @Override
-    protected Object clone() throws CloneNotSupportedException {
-        return super.clone();
+   public ChineseEncryption clone(){
+        return new ChineseEncryption(this.numColum, this.numRows);
     }
+
 }

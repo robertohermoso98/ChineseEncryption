@@ -14,98 +14,101 @@ public class Run {
     private ChineseEncryption che;
 
 
-    public Run(){
-        codifiesFlag=true;
-        traceFlag=true;
-        outpuFile="salidas.txt";
-        inputFile="entradas.txt";
-        che=new ChineseEncryption();
+    public Run() {
+        codifiesFlag = true;
+        traceFlag = true;
+        outpuFile = "salidas.txt";
+        inputFile = "entradas.txt";
+        che = new ChineseEncryption();
     }
 
-    public void runPlay(String fillName){
+    public void runPlay(String fillName) {
         String cadena;
-        fillName=fillName+".txt";
+        //fillName=fillName+".txt";
         try {
             FileReader f = new FileReader(fillName);
             BufferedReader b = new BufferedReader(f);
             while ((cadena = b.readLine()) != null) {
-                if(!cadena.equals("")){
+                if (!cadena.equals("")) {
                     chooseAction(cadena);
                 }
 
             }
             b.close();
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public void chooseAction(String cadena){
+    public void chooseAction(String cadena) {
         StringTokenizer st = new StringTokenizer(cadena);
-        String [] stringArray = new String[st.countTokens()];
-        int count =0;
-        while( st.hasMoreTokens()){
-            stringArray[count]=st.nextToken();
+        String[] stringArray = new String[st.countTokens()];
+        int count = 0;
+        while (st.hasMoreTokens()) {
+            stringArray[count] = st.nextToken();
             count++;
         }
-        if(stringArray[0].equals("@")){
-            modificarBandera(stringArray[1],stringArray[2]);
-        }else{
-            chooseMethod(stringArray);
+        if (stringArray[0].equals("@")) {
+            modificarBandera(stringArray[1], stringArray[2]);
+        } else {
+            if (stringArray[0].equals("&")) {
+                chooseMethod(stringArray);
+            }
         }
     }
 
-    public void modificarBandera(String st1 , String st2){
+    public void modificarBandera(String st1, String st2) {
         boolean onOff;
-        if(st2.equals("ON")){
-            onOff=true;
-        }else{
-            onOff=false;
+        if (st2.equals("ON")) {
+            onOff = true;
+        } else {
+            onOff = false;
         }
-        if(st1.equals("codifica")){
-            codifiesFlag=onOff;
-        }else{
-            traceFlag=onOff;
+        if (st1.equals("codifica")) {
+            codifiesFlag = onOff;
+        } else {
+            traceFlag = onOff;
         }
     }
 
-   public void chooseMethod(String [] stringArray){
-       String fuction = stringArray[1];
-       if(fuction.equals("ficheroentrada")){
-           inputFile=stringArray[2];
-       }else{
-           if(fuction.equals("ficherosalida")){
-               outpuFile=stringArray[2];
-           }else{
-              if(fuction.equals("filas")){
-                  che.setNumRows(Integer.parseInt(stringArray[2]));
-               }else{
-                 if(fuction.equals("columnas")){
-                    che.setNumColum(Integer.parseInt(stringArray[2]));
-                 }else{
-                     china();
-                 }
-              }
-           }
-       }
+    public void chooseMethod(String[] stringArray) {
+        String fuction = stringArray[1];
+        if (fuction.equals("ficheroentrada")) {
+            inputFile = stringArray[2];
+        } else {
+            if (fuction.equals("ficherosalida")) {
+                outpuFile = stringArray[2];
+            } else {
+                if (fuction.equals("filas")) {
+                    che.setNumRows(Integer.parseInt(stringArray[2]));
+                } else {
+                    if (fuction.equals("columnas")) {
+                        che.setNumColum(Integer.parseInt(stringArray[2]));
+                    } else {
+                        china();
+                    }
+                }
+            }
+        }
     }
 
-    public void china (){
+    public void china() {
 
     }
 
-    public void formatInput(String fileInput){
+    public void formatInput(String fileInput) {
 
 
     }
-    public void show(String str){
-        if(traceFlag){
+
+    public void show(String str) {
+        if (traceFlag) {
             System.out.println(str);
         }
     }
 
     public void setChe(ChineseEncryption che) {
-        this.che = che;
+        this.che = che.clone();
     }
 
     public void setCodifiesFlag(boolean codifiesFlag) {
