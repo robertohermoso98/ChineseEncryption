@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3947dd53-f236-4473-8d3e-25d169a4e54f" name="Default Changelist" comment="" />
+    <list default="true" id="3947dd53-f236-4473-8d3e-25d169a4e54f" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ChineseEncryption/out/production/ChineseEncryption/ChineseEncryption.class" beforeDir="false" afterPath="$PROJECT_DIR$/ChineseEncryption/out/production/ChineseEncryption/ChineseEncryption.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ChineseEncryption/out/production/ChineseEncryption/Run.class" beforeDir="false" afterPath="$PROJECT_DIR$/ChineseEncryption/out/production/ChineseEncryption/Run.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ChineseEncryption/src/ChineseEncryption.java" beforeDir="false" afterPath="$PROJECT_DIR$/ChineseEncryption/src/ChineseEncryption.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ChineseEncryption/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/ChineseEncryption/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ChineseEncryption/src/Run.java" beforeDir="false" afterPath="$PROJECT_DIR$/ChineseEncryption/src/Run.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -28,7 +35,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/ChineseEncryption" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RunManager">
@@ -57,6 +64,7 @@
       <workItem from="1631613946653" duration="1908000" />
       <workItem from="1632390203083" duration="25000" />
       <workItem from="1632853906830" duration="42000" />
+      <workItem from="1633073662829" duration="698000" />
     </task>
     <servers />
   </component>

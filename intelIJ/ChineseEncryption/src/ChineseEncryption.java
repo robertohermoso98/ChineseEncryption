@@ -4,16 +4,23 @@ public class ChineseEncryption  implements Cloneable {
 
     private int numColum;
     private int numRows;
-
-
+    private boolean selection;
 
     public ChineseEncryption(){
+
         numColum=3;
+        numRows=0;
+        selection=true;
     }
     public ChineseEncryption(int colum, int rows){
         numColum=colum;
         numRows=rows;
+        selection=true;
     }
+
+    public boolean isSelection() { return selection; }
+
+    public void setSelection(boolean selection) { this.selection = selection; }
 
     public int getNumColum() {
         return numColum;
@@ -40,12 +47,31 @@ public class ChineseEncryption  implements Cloneable {
        return makeExitTextEncrypt(arrayString);
     }
 
+    public void setColumRow(String text){
+        int size = text.split("").length;
+        if(selection){
+            numRows=techo(size,numColum);
+        }else{
+            numColum=techo(size,numRows);
+        }
+    }
+
+    public int techo(int a, int b){
+        float fa=(float) a;
+        float fb=(float) b;
+        int result=a/b;
+        if(fa%fb!=0){
+            result++;
+        }
+        return result;
+    }
+
    public String description(String plainText){
         String [] text = plainText.split("");
-        String [][] textArray= new String[numColum][numRows];
+        String [][] textArray= new String[numRows][numColum];
         int cont=0;
-        for (int i =0 ; i < numColum ; i++){
-            for ( int e =0 ; e < numRows ; e++){
+        for (int i =0 ; i < numRows ; i++){
+            for ( int e =0 ; e < numColum ; e++){
                 textArray[i][e]=text[cont];
                 cont++;
             }
@@ -96,8 +122,8 @@ public class ChineseEncryption  implements Cloneable {
 
     public String makeExitTextEncrypt(String [] [] ss){
         String s= new String();
-        for (int i =0 ; i<numColum; i++){
-            for (int e=0; e<numRows; e++){
+        for (int i =0 ; i<numRows; i++){
+            for (int e=0; e<numColum; e++){
                 s = s +(ss[i][e]);
             }
         }
@@ -105,24 +131,25 @@ public class ChineseEncryption  implements Cloneable {
     }
 
     @Override
-    public String toString() {
-        return "ChineseEncryption{" +
-                "numColum=" + numColum +
-                ", numRows=" + numRows +
-                '}';
-    }
-
-    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ChineseEncryption that = (ChineseEncryption) o;
-        return numColum == that.numColum && numRows == that.numRows;
+        return numColum == that.numColum && numRows == that.numRows && selection == that.selection;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(numColum, numRows);
+        return Objects.hash(numColum, numRows, selection);
+    }
+
+    @Override
+    public String toString() {
+        return "ChineseEncryption{" +
+                "numColum=" + numColum +
+                ", numRows=" + numRows +
+                ", selection=" + selection +
+                '}';
     }
 
     @Override

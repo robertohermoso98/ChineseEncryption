@@ -42,9 +42,7 @@ public class Text {
         for (int i = 0 ; i < inputSplit.length ; i ++ ){
             int code = inputSplit[i].charAt(0);
             if((code>=65 && code<=90) || (code <= 122 && code >= 97) ){// si es mayuscula se hace minuscula
-                code = code + 32;
-                String aux = String.valueOf((char) code);
-                inputSplit[i]=aux;
+                output=output+inputSplit[i];
             }
         }
         return output;

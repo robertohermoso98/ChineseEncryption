@@ -1,7 +1,4 @@
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.util.Locale;
+import java.io.*;
 import java.util.Objects;
 import java.util.StringTokenizer;
 
@@ -13,13 +10,26 @@ public class Run {
     private String inputFile;
     private ChineseEncryption che;
 
-
     public Run() {
         codifiesFlag = true;
         traceFlag = true;
-        outpuFile = "salidas.txt";
-        inputFile = "entradas.txt";
+        outpuFile = new String("salida.txt");
+        inputFile = new String("entrada.txt");
         che = new ChineseEncryption();
+    }
+
+    public Run(boolean codifiesFlag, boolean traceFlag) {
+        this.codifiesFlag = codifiesFlag;
+        this.traceFlag = traceFlag;
+        outpuFile = new String("salida.txt");
+        inputFile = new String("entrada.txt");
+        che = new ChineseEncryption();
+    }
+
+    public void imprimir(String text) {
+        if (traceFlag == true) {
+            System.out.println(text);
+        }
     }
 
     public void runPlay(String fillName) {
@@ -58,41 +68,173 @@ public class Run {
     }
 
     public void modificarBandera(String st1, String st2) {
-        boolean onOff;
+        boolean onOff = true;
         if (st2.equals("ON")) {
             onOff = true;
         } else {
-            onOff = false;
+            if (st2.equals("OFF")) {
+                onOff = false;
+            } else {
+                imprimir("Error argumento de bandera no valido");
+            }
         }
         if (st1.equals("codifica")) {
             codifiesFlag = onOff;
         } else {
-            traceFlag = onOff;
+            if (st1.equals("traza")) {
+                traceFlag = onOff;
+            } else {
+                imprimir("Error bandera no balida");
+            }
         }
     }
 
     public void chooseMethod(String[] stringArray) {
         String fuction = stringArray[1];
         if (fuction.equals("ficheroentrada")) {
-            inputFile = stringArray[2];
+            selectionInputFile(stringArray[2]);
         } else {
             if (fuction.equals("ficherosalida")) {
-                outpuFile = stringArray[2];
+                selectionOutputFile(stringArray[2]);
             } else {
                 if (fuction.equals("filas")) {
-                    che.setNumRows(Integer.parseInt(stringArray[2]));
+                    rows(stringArray[2]);
                 } else {
                     if (fuction.equals("columnas")) {
-                        che.setNumColum(Integer.parseInt(stringArray[2]));
+                        colum(stringArray[2]);
                     } else {
-                        china();
+                        if (fuction.equals("china")) {
+                            china();
+                        } else {
+                            if (fuction.equals("formateaentrada")) {
+                                formateentrada();
+                            } else {
+                                imprimir("Error comando no encontrado");
+                            }
+                        }
                     }
                 }
             }
         }
     }
 
+    public void rows(String number) {
+        try {
+            che.setNumRows(Integer.parseInt(number));
+            che.setSelection(false);
+            imprimir("Modificacion de las filas realizadas correctamente");
+        } catch (Exception e) {
+            imprimir("Error en la seleccion de las filas");
+        }
+    }
+
+    public void colum(String number) {
+        try {
+            che.setNumColum(Integer.parseInt(number));
+            che.setSelection(true);
+            imprimir("Modificacion de las columnas realizadas correctamente");
+        } catch (Exception e) {
+            imprimir("Error en la seleccion de las columnas");
+        }
+    }
+
+    public void selectionOutputFile(String file) {
+        File outpuFile = new File(file);
+        this.outpuFile = new String(file);
+        if (outpuFile.exists()) {
+            imprimir("Fichero de salida seleccionado correctamente");
+        } else {
+            imprimir("Error no exite el fichero selecionado");
+        }
+
+    }
+
+    public void selectionInputFile(String file) {
+        File inputFile = new File(file);
+        this.inputFile = new String(file);
+        if (inputFile.exists()) {
+            imprimir("Fichero de entrada seleccionado correctamente");
+        } else {
+            imprimir("Error no exite el fichero selecionado");
+        }
+    }
+
+    public void formateentrada() {
+        File f = new File(inputFile);
+        if (!f.exists()) {
+            imprimir("No existe ningun fichero de entrada con el nombre proporcionado");
+        } else {
+            String entrada = format();
+            File fichero = new File(outpuFile);
+            if (fichero.exists()) {
+                if (fichero.delete()) {
+                    imprimir("El fichero ha sido borrado satisfactoriamente");
+                } else {
+                    imprimir("El fichero no pudó ser borrado");
+                }
+            }
+            try (FileWriter fw = new FileWriter(outpuFile, true);
+                 BufferedWriter bw = new BufferedWriter(fw);
+                 PrintWriter out = new PrintWriter(bw)) {
+                out.println(entrada);
+                imprimir("Fichero formateado correctamente");
+            } catch (IOException e) {
+                imprimir("Error al escribir en el fichero");
+
+            }
+        }
+    }
+
+    public String format() {
+        Text text = new Text();
+        String cadena = "";
+        String entrada = "";
+        try {
+            FileReader fr = new FileReader(inputFile);
+            BufferedReader br = new BufferedReader(fr);
+            while ((cadena = br.readLine()) != null) {
+                if (!cadena.equals("")) {
+                    if (cadena.length() + entrada.length() <= 1000) {
+                        cadena = text.format(cadena);
+                        entrada = entrada + cadena + "\n";
+                    } else {
+
+                    }
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return entrada;
+    }
+
+
     public void china() {
+        // china va leyendo el fichero de entrada en cada palabra hace el setColumRow !!!!!!!!!!!!!!!!!!11
+        /////////////////////////////////////////////////////////////////////////////////////////////
+        File f = new File(inputFile);
+        File f1 = new File(outpuFile);
+        if (f.exists() && f1.exists()) {
+            try {
+                FileReader fr = new FileReader(inputFile);
+                FileWriter fw = new FileWriter(outpuFile);
+                String cadenaActual = "";
+                String cadenaDespues = "";
+                BufferedReader br = new BufferedReader(fr);
+                while ((cadenaActual = br.readLine()) != null) {
+                    if (codifiesFlag) {
+                        che.setColumRow(cadenaActual);
+                        cadenaDespues = cadenaDespues + che.encrytion(cadenaActual) + "\n";
+                    }
+                }
+                BufferedWriter bw = new BufferedWriter(fw);
+                bw.write(cadenaDespues);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } else {
+            imprimir("Error no hay existe un fichero con ese nombre");
+        }
 
     }
 
