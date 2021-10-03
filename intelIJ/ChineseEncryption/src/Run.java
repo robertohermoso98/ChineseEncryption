@@ -210,12 +210,9 @@ public class Run {
 
 
     public void china() {
-        // china va leyendo el fichero de entrada en cada palabra hace el setColumRow !!!!!!!!!!!!!!!!!!11
-        /////////////////////////////////////////////////////////////////////////////////////////////
         File f = new File(inputFile);
         File f1 = new File(outpuFile);
         if (f.exists() && f1.exists()) {
-
             try {
                 FileReader fr = new FileReader(inputFile);
                 String cadenaActual = "";
@@ -223,24 +220,30 @@ public class Run {
                 String axu;
                 BufferedReader br = new BufferedReader(fr);
                 while ((cadenaActual = br.readLine()) != null) {
+                    ///if no es cadena vacia
                     che.setColumRow(cadenaActual);
                     if (codifiesFlag) {
-                        imprimir("Texto en claro : "+ cadenaActual );
-                        axu=che.encrytion(cadenaActual,traceFlag);
-                        imprimir("Texto cifrado : "+axu);
+                        imprimir("Texto en claro : " + cadenaActual);
+                        axu = che.encrytion(cadenaActual, traceFlag);
+                        imprimir("Texto cifrado : " + axu);
                         cadenaDespues = cadenaDespues + axu + "\n";
-                    }else{
-                        imprimir("Texto cifrado : "+ cadenaActual);
-                        axu=che.description(cadenaActual,traceFlag);
-                        imprimir("Texto descifrado : "+ axu);
-                        cadenaDespues = cadenaDespues + axu+ "\n";
+                    } else {
+                        imprimir("Texto cifrado : " + cadenaActual);
+                        axu = che.description(cadenaActual, traceFlag);
+                        imprimir("Texto descifrado : " + axu);
+                        cadenaDespues = cadenaDespues + axu + "\n";
                     }
                 }
-                FileWriter fw = new FileWriter(outpuFile);
-                BufferedWriter bw = new BufferedWriter(fw);
-                PrintWriter pw = new PrintWriter(bw);
-                pw.println(cadenaDespues);
-                fw.close();
+
+                try (FileWriter fw = new FileWriter(outpuFile, true);
+                     BufferedWriter bw = new BufferedWriter(fw);
+                     PrintWriter out = new PrintWriter(bw)) {
+                    out.println(cadenaDespues);
+                    imprimir("Algoritmo realizado con exito");
+                } catch (IOException e) {
+                    imprimir("Error al escribir en el fichero");
+
+                }
                 fr.close();
             } catch (Exception e) {
                 e.printStackTrace();
@@ -249,6 +252,17 @@ public class Run {
             imprimir("Error no hay existe un fichero con ese nombre");
         }
 
+    }
+
+    public void defaultFile() {
+        File in = new File(inputFile);
+        if (!in.exists()) {
+            System.out.println("no escite entrada");
+        }
+        File ou = new File(outpuFile);
+        if (!ou.exists()) {
+            System.out.println("no existe salida");
+        }
     }
 
     public void formatInput(String fileInput) {

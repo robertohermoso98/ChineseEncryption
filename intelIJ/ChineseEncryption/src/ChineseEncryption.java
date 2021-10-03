@@ -39,7 +39,6 @@ public class ChineseEncryption  implements Cloneable {
     }
 
     public String encrytion(String plainText, boolean imprimir){
-
         Text text = new Text();
         String [] [] arrayString = new String [numRows][numColum];
         plainText=text.fillPlainText(plainText, numColum*numRows);

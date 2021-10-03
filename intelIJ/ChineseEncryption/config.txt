@@ -4,6 +4,8 @@
 & filas 4
 & columnas 5
 & ficheroentrada  entrada.txt
+& ficherosalida entradaFormat.txt
+& formateaentrada
+& ficheroentrada entradaFormat.txt
 & ficherosalida salida.txt
-# & formateaentrada
 & china
