@@ -2,6 +2,8 @@
 @ traza ON
 & filas as
 & filas 4
-& columnas 6
-& ficheroentrada  joakin.txt
-& formateaentrada
+& columnas 5
+& ficheroentrada  entrada.txt
+& ficherosalida salida.txt
+# & formateaentrada
+& china

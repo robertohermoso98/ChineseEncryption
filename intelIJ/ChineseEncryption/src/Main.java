@@ -7,7 +7,7 @@ public class Main {
     public static void main(String [] args){
 
 
-        ChineseEncryption ch = new ChineseEncryption();
+       /* ChineseEncryption ch = new ChineseEncryption();
         String nom=  "primerapractica";
         ch.setNumColum(5);
         ch.setSelection(true);
@@ -16,9 +16,11 @@ public class Main {
         //System.out.println(ch.encrytion(ch.encrytion(ch.encrytion(ch.encrytion(ch.encrytion(ch.encrytion(nom)))))));
         System.out.println(ch.description(ch.encrytion(nom)));
 
+
+        */
          Run run = new Run();
         run.runPlay("config.txt");
-        /*
+ /*
         ChineseEncryption che = new ChineseEncryption(4,4);
         System.out.println(che.encrytion("PRIMERAPRACTICA"));
 
@@ -28,7 +30,9 @@ public class Main {
             System.out.println(st.nextToken());
         }
 
-         */
+
+  */
+
 
     }
 }

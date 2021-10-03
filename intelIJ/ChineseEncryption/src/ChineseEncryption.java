@@ -38,7 +38,7 @@ public class ChineseEncryption  implements Cloneable {
         this.numRows = numRows;
     }
 
-    public String encrytion(String plainText){
+    public String encrytion(String plainText, boolean imprimir){
 
         Text text = new Text();
         String [] [] arrayString = new String [numRows][numColum];
@@ -66,14 +66,20 @@ public class ChineseEncryption  implements Cloneable {
         return result;
     }
 
-   public String description(String plainText){
+   public String description(String plainText, boolean imprimir){
         String [] text = plainText.split("");
         String [][] textArray= new String[numRows][numColum];
         int cont=0;
         for (int i =0 ; i < numRows ; i++){
             for ( int e =0 ; e < numColum ; e++){
                 textArray[i][e]=text[cont];
+                if(imprimir){
+                    System.out.print(text[cont]);
+                }
                 cont++;
+            }
+            if(imprimir){
+                System.out.println("");
             }
         }
         return makeExitTextDescrytp(textArray);

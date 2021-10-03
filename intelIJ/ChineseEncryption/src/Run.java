@@ -215,20 +215,33 @@ public class Run {
         File f = new File(inputFile);
         File f1 = new File(outpuFile);
         if (f.exists() && f1.exists()) {
+
             try {
                 FileReader fr = new FileReader(inputFile);
-                FileWriter fw = new FileWriter(outpuFile);
                 String cadenaActual = "";
                 String cadenaDespues = "";
+                String axu;
                 BufferedReader br = new BufferedReader(fr);
                 while ((cadenaActual = br.readLine()) != null) {
+                    che.setColumRow(cadenaActual);
                     if (codifiesFlag) {
-                        che.setColumRow(cadenaActual);
-                        cadenaDespues = cadenaDespues + che.encrytion(cadenaActual) + "\n";
+                        imprimir("Texto en claro : "+ cadenaActual );
+                        axu=che.encrytion(cadenaActual,traceFlag);
+                        imprimir("Texto cifrado : "+axu);
+                        cadenaDespues = cadenaDespues + axu + "\n";
+                    }else{
+                        imprimir("Texto cifrado : "+ cadenaActual);
+                        axu=che.description(cadenaActual,traceFlag);
+                        imprimir("Texto descifrado : "+ axu);
+                        cadenaDespues = cadenaDespues + axu+ "\n";
                     }
                 }
+                FileWriter fw = new FileWriter(outpuFile);
                 BufferedWriter bw = new BufferedWriter(fw);
-                bw.write(cadenaDespues);
+                PrintWriter pw = new PrintWriter(bw);
+                pw.println(cadenaDespues);
+                fw.close();
+                fr.close();
             } catch (Exception e) {
                 e.printStackTrace();
             }
