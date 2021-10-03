@@ -20,6 +20,9 @@ public class Main {
         */
          Run run = new Run();
         run.runPlay("config.txt");
+        File f = new File("joakin.txt");
+        f.delete();
+        File ff = new File ("joakin.txt");
  /*
         ChineseEncryption che = new ChineseEncryption(4,4);
         System.out.println(che.encrytion("PRIMERAPRACTICA"));

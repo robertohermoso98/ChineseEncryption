@@ -73,7 +73,7 @@ public class ChineseEncryption  implements Cloneable {
             for ( int e =0 ; e < numColum ; e++){
                 textArray[i][e]=text[cont];
                 if(imprimir){
-                    System.out.print(text[cont]);
+                    System.out.print(text[cont]+" || ");
                 }
                 cont++;
             }

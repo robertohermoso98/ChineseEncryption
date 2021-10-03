@@ -212,6 +212,17 @@ public class Run {
     public void china() {
         File f = new File(inputFile);
         File f1 = new File(outpuFile);
+        FileWriter fw1 = null;
+        try {
+            fw1 = new FileWriter(outpuFile);
+            BufferedWriter bw = new BufferedWriter(fw1);
+            PrintWriter prr = new PrintWriter(bw);
+            prr.println("juas");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
         if (f.exists() && f1.exists()) {
             try {
                 FileReader fr = new FileReader(inputFile);
@@ -220,18 +231,19 @@ public class Run {
                 String axu;
                 BufferedReader br = new BufferedReader(fr);
                 while ((cadenaActual = br.readLine()) != null) {
-                    ///if no es cadena vacia
-                    che.setColumRow(cadenaActual);
-                    if (codifiesFlag) {
-                        imprimir("Texto en claro : " + cadenaActual);
-                        axu = che.encrytion(cadenaActual, traceFlag);
-                        imprimir("Texto cifrado : " + axu);
-                        cadenaDespues = cadenaDespues + axu + "\n";
-                    } else {
-                        imprimir("Texto cifrado : " + cadenaActual);
-                        axu = che.description(cadenaActual, traceFlag);
-                        imprimir("Texto descifrado : " + axu);
-                        cadenaDespues = cadenaDespues + axu + "\n";
+                    if (!cadenaActual.equals("")) {
+                        che.setColumRow(cadenaActual);
+                        if (codifiesFlag) {
+                            imprimir("Texto en claro : " + cadenaActual);
+                            axu = che.encrytion(cadenaActual, traceFlag);
+                            imprimir("Texto cifrado : " + axu);
+                            cadenaDespues = cadenaDespues + axu + "\n";
+                        } else {
+                            imprimir("Texto cifrado : " + cadenaActual);
+                            axu = che.description(cadenaActual, traceFlag);
+                            imprimir("Texto descifrado : " + axu);
+                            cadenaDespues = cadenaDespues + axu + "\n";
+                        }
                     }
                 }
 

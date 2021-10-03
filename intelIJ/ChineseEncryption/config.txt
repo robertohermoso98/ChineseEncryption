@@ -7,5 +7,12 @@
 & ficherosalida entradaFormat.txt
 & formateaentrada
 & ficheroentrada entradaFormat.txt
-& ficherosalida salida.txt
+& ficherosalida salidaF.txt
 & china
+@ codifica OFF
+& ficheroentrada salidaF.txt
+& ficherosalida salida.txt
+
+& china
+## deve de dar error
+# & ficherosalida
