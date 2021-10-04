@@ -19,7 +19,7 @@ public class Main {
 
         */
          Run run = new Run();
-        run.runPlay("config.txt");
+        run.runPlay("configuracion1.txt");
         File f = new File("joakin.txt");
         f.delete();
         File ff = new File ("joakin.txt");

@@ -1,0 +1,42 @@
+
+# Comenzamos probando filas y columnas 
+& columnas 
+& columnas no_vale
+& columnas
+& filas 
+& filas no_vale
+& filas
+@ traza OFF
+# Comprobando comentarios
+ # Comprobando: No debe de leerlo
+
+# Vamos a ejecutar el programa, debe leer el fichero Entrada.txt
+# Y guardarlo en Salida.txt
+@ codifica ON
+& china
+
+
+& ficherosalida Salida2.txt
+& columnas
+@ codifica ON
+& china
+
+# vamos a comprobar la bandera,ninguna debe de funcionar
+@ banderainvalida off
+@ codifica nada
+@ traza nada
+
+& ficherosalida SalidaFormatear.txt
+& formateaentrada
+
+# Vamos a decodificar
+& ficheroentrada salida.txt
+& ficherosalida EntradaDescod.txt
+@ codifica OFF
+& china
+
+& filas 6
+& ficheroentrada Salida2.txt
+& ficherosalida Salida3.txt
+& china
+

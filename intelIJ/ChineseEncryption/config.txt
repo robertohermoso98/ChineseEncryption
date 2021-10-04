@@ -3,11 +3,12 @@
 & filas as
 & filas 4
 & columnas 5
+& columnas
 & ficheroentrada  entrada.txt
 & ficherosalida entradaFormat.txt
 & formateaentrada
 & ficheroentrada entradaFormat.txt
-& ficherosalida salidaF.txt
+& ficherosalida salidaFF.txt
 & china
 @ codifica OFF
 & ficheroentrada salidaF.txt
