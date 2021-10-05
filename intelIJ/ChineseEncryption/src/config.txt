@@ -1,7 +1,0 @@
-
-@ traza ON
-& filas as
-& filas 4
-& columnas 6
-& ficheroentrada entra.txt
-& formateaentrada
