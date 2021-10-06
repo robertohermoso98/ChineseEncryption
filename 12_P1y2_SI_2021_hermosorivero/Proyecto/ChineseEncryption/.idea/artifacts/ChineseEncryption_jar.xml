@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="ChineseEncryption:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/ChineseEncryption_jar</output-path>
+    <root id="archive" name="ChineseEncryption.jar">
+      <element id="module-output" name="ChineseEncryption" />
+    </root>
+  </artifact>
+</component>

@@ -8,20 +8,23 @@ import java.util.StringTokenizer;
  * @version 1.1.0
  */
 public class Main {
-
     /**
      * Metodo main, incia el programa
-     * @param args : argumentos del program
-     *             a
+     *
+     * @param args : argumentos del programa
      */
     public static void main(String[] args) {
-        String mensajeError = "Error en el numero de argumentos\nPara buscar ayude ejecute elargumento -h\n" +
-                "Para ejecutar el programa ejcute el argumento -f seguido del nombre del fichero de configuracion";
+        String mensajeError = "Error en el numero de argumentos\nPara buscar ayude ejecute el argumento -h\n" +
+                "Para ejecutar el programa ejcute el argumento -f <nombre del fichero de configuracion>";
         if (args.length < 1 || args.length > 2) {
             System.out.println(mensajeError);
         } else {
-            if (args.length == 1 && args[0].equals("-h")) {
-                mensajeAyuda();
+            if (args.length == 1) {
+                if (!args[0].equals("-h")) {
+                    System.out.println(mensajeError);
+                } else {
+                    mensajeAyuda();
+                }
             } else {
                 init(args);
             }
@@ -30,9 +33,10 @@ public class Main {
 
     /**
      * Ejecuta el programa
+     *
      * @param args : argumentos para el programa
      */
-    public static void init(String [] args) {
+    public static void init(String[] args) {
         if (args.length == 2 && args[0].equals("-f")) {
             File f = new File(args[1]);
             if (f.exists()) {
@@ -41,6 +45,9 @@ public class Main {
             } else {
                 System.out.println("El fichero de configuracion no existe");
             }
+        }else{
+            System.out.println("Error en el numero de argumentos\nPara buscar ayude ejecute el argumento -h\n" +
+                    "Para ejecutar el programa ejcute el argumento -f <nombre del fichero de configuracion>");
         }
     }
 

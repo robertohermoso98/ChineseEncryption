@@ -1,0 +1,11 @@
+# inicio del programa
+& filas 3
+& ficheroentrada entrada.txt
+& formateaentrada
+& china
+& ficheroentrada salida.txt
+& ficherosalida descifrado.txt
+@ codifica OFF
+& china
+esto es un comando no reconocidooooo :( 
+# fin del programa
